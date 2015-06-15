@@ -24,7 +24,7 @@ $(document).ready(function(){
 
     $("#js-message").on("ajax:success",function(e,data,status,xhr){
       $(".messages_container").append(
-        "<div class='text-right well well-sm animated bounceIn' message_id='"+data.id+"'>"+
+        "<div class='text-right well well-sm animated fadeIn' message_id='"+data.id+"'>"+
           // "<a href='/user/"+data.user_id+"'>"
           // +data.user.first_name+" "+data.user.last_name+
           // "</a>: "

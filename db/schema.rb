@@ -14,16 +14,16 @@
 ActiveRecord::Schema.define(version: 20150610055505) do
 
   create_table "messages", force: :cascade do |t|
-    t.string  "main_message"
-    t.integer "user_id"
+    t.string  "main_message", limit: 255
+    t.integer "user_id",      limit: 4
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "username"
-    t.string  "password"
-    t.boolean "is_admin",   default: false, null: false
+    t.string  "first_name", limit: 255
+    t.string  "last_name",  limit: 255
+    t.string  "username",   limit: 255
+    t.string  "password",   limit: 255
+    t.boolean "is_admin",   limit: 1,   default: false, null: false
   end
 
 end
