@@ -1,0 +1,3 @@
+<div class="<%= format %> well well-sm" message_id=<%= m.id %>>
+  <%= link_to m.user.first_name+" "+m.user.last_name, user_path(m.user_id) %>: <%= m.main_message %>
+</div>

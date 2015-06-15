@@ -1,0 +1,23 @@
+.form-control {
+  position: relative;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-register button, .form-signin button {
+  align: left;
+}
+.users_container, .messages_container {
+  height: 400px;
+  overflow: auto;
+}
+.dashboard {
+  background-color:#f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  height: 500px;
+}
+textarea {
+  resize: none;
+  min-height: 90px;
+}

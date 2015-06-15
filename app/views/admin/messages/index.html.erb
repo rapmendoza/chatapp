@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Dashboard</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation">
+          <%= link_to 'Home', admin_dashboard_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Users', admin_users_path %>
+        </li>
+        <li role="presentation" class="active">
+          <%= link_to 'Messages', admin_messages_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Sender</th>
+            <th>Message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @messages.each do |m| %>
+            <tr>
+              <td><%= m.user.first_name %> <%= m.user.last_name %></td>
+              <td><%= m.main_message %></td>
+              <td>
+                <%= link_to 'View', admin_message_path(m.id), :class => 'btn btn-default' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

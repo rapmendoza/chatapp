@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 users_container">
+      <h1>Users</h1>
+      <ul class="list-group">
+        <% @users.each do |u| %>
+          <li class="list-group-item">
+            <span class="badge"></span>
+            <%= link_to u.first_name+" "+u.last_name, user_path(u.id) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
