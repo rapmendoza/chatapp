@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_user
+
   def index
     @users = User.all
   end
@@ -8,6 +10,11 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+  end
 
+  private
+
+  def require_user
+    redirect_to root_path if current_user.nil?
   end
 end

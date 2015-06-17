@@ -1,35 +1,11 @@
 $(document).ready(function(){
 
-    var ctr = 0;
-    setInterval(function() {
-      var message_id = $(".messages_container div:last-child").attr('message_id');
-      $.ajax({
-        type: "GET",
-        url: "/messages/"+message_id,
-        success: function(){
-        }
-      }).done(function(new_messages){
-        $.each(new_messages, function(key, data){
-          $(".messages_container").append(
-            "<div class='well well-sm animated bounceIn' message_id='"+data.id+"'>"+
-              "<a href='/user/"+data.user_id+"'>"
-              +data.user.first_name+" "+data.user.last_name+
-              "</a>: "
-              +data.main_message+
-            "</div>"
-          ).scrollTop(9999999);
-        });
-      });
-    }, 5000);
-
     $("#js-message").on("ajax:success",function(e,data,status,xhr){
+      var message = $("<div>").text(data.main_message).html();
       $(".messages_container").append(
         "<div class='text-right well well-sm animated fadeIn' message_id='"+data.id+"'>"+
-          // "<a href='/user/"+data.user_id+"'>"
-          // +data.user.first_name+" "+data.user.last_name+
-          // "</a>: "
           "<strong>You</strong>: "
-          +data.main_message+
+          +message+
         "</div>"
       ).scrollTop(9999999);
       $('textarea').val('');

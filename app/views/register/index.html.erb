@@ -6,9 +6,14 @@
 
       <%= form_for @user, :url => register_path do |f| %>
 
-        <div class="alert alert-danger" role="alert">
-          <%= @user.errors.messages %>
-        </div>
+          <% if @user.errors.full_messages.any? %>
+            <div class="alert alert-danger">
+              <% @user.errors.each do |input, message| %>
+                <%= input %>: <%= message %>
+                <br/>
+              <% end %>
+            </div>
+          <% end %>
 
         <div class="form-group">
           <%= f.label :first_name %>

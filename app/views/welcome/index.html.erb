@@ -24,11 +24,34 @@
             <%= f.hidden_field :user_id, :value => session[:user_id] %>
             <% #f.submit :Submit, :class => 'btn btn-primary btn_block form-group' %>
           <% end %>
-          <button type="button" id="scroll" name="button">check scroll</button>
+          <button type="button" id="scroll" name="button" hidden>check scroll</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    setInterval(function() {
+      var message_id = $(".messages_container div:last-child").attr('message_id');
+      $.ajax({
+        type: "GET",
+        url: "/messages/"+message_id,
+        success: function(){
+        }
+      }).done(function(new_messages){
+        $.each(new_messages, function(key, data){
+          $(".messages_container").append(
+            "<div class='well well-sm animated bounceIn' message_id='"+data.id+"'>"+
+              "<a href='/user/"+data.user_id+"'>"
+              +data.user.first_name+" "+data.user.last_name+
+              "</a>: "
+              +data.main_message+
+            "</div>"
+          ).scrollTop(9999999);
+        });
+      });
+    }, 5000);
+  </script>
 
 <% else %>
 
@@ -39,10 +62,6 @@
         <h2>Sign in</h2>
 
         <%= form_for @session, :url => session_path do |f| %>
-
-          <div class="alert alert-danger" role="alert">
-            <%= @session.errors.messages %>
-          </div>
 
           <div class="form-group">
             <%= f.label :username %>

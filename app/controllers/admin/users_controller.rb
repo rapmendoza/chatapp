@@ -1,5 +1,7 @@
 module Admin
   class UsersController < ApplicationController
+    before_filter :require_admin
+
     def index
       @users = User.all
     end
@@ -25,6 +27,12 @@ module Admin
       User.find(params[:id]).destroy
       flash[:success] = "User deletion succesful."
       redirect_to admin_users_path
+    end
+
+    private
+
+    def require_admin
+      redirect_to root_path if current_user.nil? || !current_user.is_admin
     end
   end
 end
