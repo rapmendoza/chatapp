@@ -21,3 +21,15 @@ textarea {
   resize: none;
   min-height: 90px;
 }
+.alert {
+  z-index: 999;
+  position: fixed;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.inner_div {
+  height: 100%;
+  width: 100%;
+}

@@ -46,13 +46,9 @@
       <% if name == "error" %>
         <% name = "danger" %>
       <% end %>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
-            <div class="alert alert-<%= name %>">
-              <%= content_tag :div, msg, id: "flash_#{name}" %>
-            </div>
-          </div>
+      <div class="alert alert-<%= name %> text-center">
+        <div class="inner_div">
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
         </div>
       </div>
     <% end %>

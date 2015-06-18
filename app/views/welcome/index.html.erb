@@ -2,7 +2,19 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-3">
+        <h1>Online Users</h1>
+        <div class="col-md-12 users_container">
+          <ul class="list-group">
+            <% @users.each do |u| %>
+              <li class="list-group-item">
+                <%= u.first_name+" "+u.last_name %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
         <h1>Messages</h1>
         <div class="col-md-12 messages_container">
           <% @messages.each do |m| %>
@@ -35,9 +47,7 @@
       var message_id = $(".messages_container div:last-child").attr('message_id');
       $.ajax({
         type: "GET",
-        url: "/messages/"+message_id,
-        success: function(){
-        }
+        url: "/messages/"+message_id
       }).done(function(new_messages){
         $.each(new_messages, function(key, data){
           $(".messages_container").append(
@@ -48,6 +58,20 @@
               +data.main_message+
             "</div>"
           ).scrollTop(9999999);
+        });
+      });
+
+      $.ajax({
+        type: "GET",
+        url: "/users/check"
+      }).done(function(online_users){
+        $(".users_container ul").html("");
+        $.each(online_users, function(key, data){
+          $(".users_container ul").append(
+            "<li class='list-group-item'>"+
+              data.first_name+" "+data.last_name+
+            "</li>"
+          );
         });
       });
     }, 5000);

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/home'     => 'home#index'
   post '/messages' => 'messages#create'
   get '/messages/:id'  => 'messages#check'
+  get '/users/check'  => 'users#check'
 
   resources :users, only: [:index, :show]
 

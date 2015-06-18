@@ -32,6 +32,11 @@ $(document).ready(function(){
       }
     });
 
+    $('div.alert').addClass("animated fadeInDown");
+    setTimeout(function() {
+      $('div.alert').addClass("animated fadeOutUp");
+    }, 3000);
+
 });
 
 
