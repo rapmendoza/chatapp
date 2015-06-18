@@ -14,9 +14,9 @@ class UsersController < ApplicationController
 
   def check
     @user = User.where(:id => current_user.id).first
-    @user.update_attributes(:last_online_at => DateTime.now.in_time_zone)
+    @user.update_attributes(:last_online_at => DateTime.now)
     # @users = User.where("last_online_at > ?", DateTime.now.in_time_zone-5)
-    @users = User.where(["id != ? AND last_online_at > ?", current_user.id, DateTime.now.in_time_zone-5])
+    @users = User.where(["id != ? AND last_online_at > ?", current_user.id, DateTime.now-5.minutes])
     render :json => @users
     # if params[:id] != Message.last.id.to_s
     #   @new_messages = Message.where("id > ?", params[:id])
