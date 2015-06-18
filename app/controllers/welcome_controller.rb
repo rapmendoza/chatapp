@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     @messages = Message.last(10)
     # @users = User.where("last_online_at > ?", DateTime.now.in_time_zone-5)
     if current_user
-      @users = User.where(["id != ? AND last_online_at > ?", current_user.id, DateTime.now.in_time_zone-5])
+      @users = User.where(["id != ? AND last_online_at > ?", current_user.id, DateTime.now-5.minutes])
     end
   end
 
