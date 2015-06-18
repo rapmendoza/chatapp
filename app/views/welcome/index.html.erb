@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-9">
         <h1>Messages</h1>
-        <div class="col-md-12 messages_container">
+        <div class="col-md-12 messages_container" count=10>
           <% @messages.each do |m| %>
           <% if m.user.id == session[:user_id] %>
             <div class="text-right well well-sm" message_id=<%= m.id %>>
@@ -30,6 +30,7 @@
             </div>
           <% end %>
         </div>
+        <div id="user_id" value=<%= current_user.id %>></div>
         <div class="col-md-12">
           <%= form_for @message, :url => messages_path, :remote => true, :data => {:type => "json"}, :html => {:id => "js-message"} do |f| %>
             <%= f.text_area :main_message, :placeholder => 'Input your message here..', :class => "form-control" %>

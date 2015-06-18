@@ -28,4 +28,10 @@ class MessagesController < ApplicationController
       render :json => ""
     end
   end
+
+  def more
+    @more_messages = Message.last(params[:count])
+    render :json => @more_messages, :include => :user
+    # render :text => params[:count]
+  end
 end
