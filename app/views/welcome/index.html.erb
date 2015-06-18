@@ -50,12 +50,13 @@
         url: "/messages/"+message_id
       }).done(function(new_messages){
         $.each(new_messages, function(key, data){
+          var message = $("<div>").text(data.main_message).html();
           $(".messages_container").append(
             "<div class='well well-sm animated bounceIn' message_id='"+data.id+"'>"+
               "<a href='/user/"+data.user_id+"'>"
               +data.user.first_name+" "+data.user.last_name+
               "</a>: "
-              +data.main_message+
+              +message+
             "</div>"
           ).scrollTop(9999999);
         });
