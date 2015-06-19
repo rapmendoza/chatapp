@@ -1,8 +1,5 @@
 <% flash.each do |name, msg| %>
-  <% if name == "error" %>
-    <% name = "danger" %>
-  <% end %>
-  <div class="alert alert-<%= name %> text-center">
+  <div class="alert alert-<%= flash_type_to_bootstrap(name) %> text-center">
     <div class="inner_div">
       <%= content_tag :div, msg, id: "flash_#{name}" %>
     </div>
