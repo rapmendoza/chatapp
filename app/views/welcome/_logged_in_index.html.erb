@@ -6,7 +6,7 @@
         <ul class="list-group">
           <% @users.each do |u| %>
             <li class="list-group-item">
-              <%= u.first_name+" "+u.last_name %>
+              <%= u.name %>
             </li>
           <% end %>
         </ul>
@@ -22,7 +22,7 @@
         <% else %>
           <% format = "" %>
           <div class="well well-sm" message_id=<%= m.id %>>
-          <%= link_to m.user.first_name+" "+m.user.last_name, user_path(m.user_id) %>:
+          <%= link_to m.user.name, user_path(m.user_id) %>:
         <% end %>
           <%= m.main_message %>
           </div>

@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => { :message => 'Input last name.' }
   validates :username, :presence => { :message => 'Input username.' }, length: { minimum: 3 }, uniqueness: true
   validates :password, :presence => { :message => 'Input password.' }
+
+  def name
+    self.first_name+" "+self.last_name
+  end
 end
